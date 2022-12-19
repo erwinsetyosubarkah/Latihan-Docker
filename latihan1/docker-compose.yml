@@ -37,15 +37,28 @@ services:
     networks:
       - laravel
 
+  
   php:
-    image: php:8-fpm
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: php:8.2.1RC1-alpine3.16
     container_name: php
+    ports:
+      - "9000:9000"
     volumes:
       - ./src:/var/www/html
-    ports:
-      - "9000:9000"    
     networks:
       - laravel
+
+
+# jika import library dari luar docker hub
+  # php:
+  #   image: php:8-fpm
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: php
+  #   volumes:
+  #     - ./src:/var/www/html
+  #   ports:
+  #     - "9000:9000"    
+  #   networks:
+  #     - laravel
